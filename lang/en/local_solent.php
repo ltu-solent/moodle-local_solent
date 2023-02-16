@@ -25,6 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['backup'] = 'Backup';
+
 $string['course'] = 'Course';
 
 $string['enablenoroledeletecontent'] = 'Enable delete "No role" content';
@@ -33,3 +35,12 @@ $string['enablenoroledeletecontent_desc'] = 'If someone is enrolled on a page, b
 $string['noroleerror'] = 'You are not correctly enrolled on this page. Please contact <a href="mailto:registry@solent.ac.uk">registry@solent.ac.uk</a> to check your module enrolments.';
 
 $string['pluginname'] = 'Solent modifications';
+
+$string['restrictbackupactivities'] = 'Restrict backup activities';
+$string['restrictbackupactivities_desc'] = '<p>Enter details of the activities that should be excluded from being backed up when doing a rollover.</p>
+<p>One entry per line. Each entry is separated by a pipe (|) and has a key/value pair where the key is "activity" or "title"
+and the value for "activity" could include "assign", "label", "folder" etc. And the value for "title" is the title, or intro text for labels.</p>
+<p>The program will search for the title in the whole text, so it doesn\'t need to be complete, but enough to uniquely identifiy the activity.</p>
+<p>You don\'t have to have both "activity" and "title", but you must have at least one.</p>';
+
+$string['startdatestring'] = ' - Start date: {$a}';

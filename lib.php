@@ -23,6 +23,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+use local_solent\helper as solenthelper;
+
 defined('MOODLE_INTERNAL') || die();
 
 function local_solent_page_init(moodle_page $page) {
@@ -65,7 +67,65 @@ function local_solent_page_init(moodle_page $page) {
         $page->requires->js_call_amd('local_solent/enrolments', 'deleteContent');
     }
 
+    if ($page->pagetype == 'backup-backup' || $page->pagetype == 'backup-import') {
+        $restrictactivities = explode("\n", $config->restrictbackupactivities);
+        // error_log(print_r($restrictactivities, true));
+        $data = [];
+        foreach ($restrictactivities as $line) {
+            $line = trim($line);
+            if (empty($line)) {
+                continue;
+            }
+            $selectors = explode('|', $line);
+            $item = [];
+            foreach ($selectors as $selector) {
+                $keyvalues = explode('=', $selector);
+                if (count($keyvalues) != 2) {
+                    continue;
+                }
+                $item[$keyvalues[0]] = $keyvalues[1];
+            }
+            $data[] = $item;
+        }
+
+        $page->requires->js_call_amd('local_solent/backup', 'restrictactivitybackup', [$data]);
+    }
+
     $page->requires->strings_for_js([
         'noroleerror'
     ], 'local_solent');
+}
+
+/**
+ * This function allows us to override any webservice function. Use it with care.
+ * https://docs.moodle.org/dev/Miscellaneous_callbacks#override_webservice_execution
+ *
+ * @param object $function Details of the function to be called.
+ * @param array $params Parameters passed by the ajax call.
+ * @return boolean|array If the callback returns anything other than false, we assume it replaces the original function.
+ */
+function local_solent_override_webservice_execution($function, $params) {
+    if ($function->name === 'core_courseformat_get_state') {
+        // $result = call_user_func_array([$function->classname, $function->methodname], $params);
+        // $decoded = json_decode($result);
+        // $updated = false;
+        // foreach ($decoded->cm as $key => $cm) {
+        //     $name = preg_replace('/\[(fa\-[a-z\-]+)\]/', '<i class="fa $1"></i>', $cm->name);
+        //     // error_log("+++++++++++++++++++++++++++++++" . $name);
+        //     if ($name != $cm->name) {
+        //         $decoded->cm[$key]->name = $name;
+        //         $updated = true;
+        //     }
+        // }
+        // if ($updated) {
+        //     return json_encode($decoded);
+        // }
+        // foreach ($result['content_items'] as $index => $contentitem) {
+        //     if (!\local_chi\canuse($contentitem->name, $courseid)) {
+        //         unset($result['content_items'][$index]);
+        //     }
+        // }
+        // return $result;
+    }
+    return false;
 }

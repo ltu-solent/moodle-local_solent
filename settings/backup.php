@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Solent version file
+ * Backup and Import settings
  *
  * @package   local_solent
  * @author    Mark Sharp <mark.sharp@solent.ac.uk>
@@ -25,7 +25,17 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2022111802;
-$plugin->release   = 2022111800;
-$plugin->requires  = 2020061500;
-$plugin->component = 'local_solent';
+$page = new admin_settingpage('local_solent_backup', get_string('backup', 'local_solent'));
+
+$name = 'local_solent/restrictbackupactivities';
+$title = new lang_string('restrictbackupactivities', 'local_solent');
+$desc = new lang_string('restrictbackupactivities_desc', 'local_solent');
+$default = '
+activity=forum|title=Unit accouncements
+title=For guidance and support
+activity=turnitintooltwo
+activity=assign';
+$setting = new admin_setting_configtextarea($name, $title, $desc, $default);
+$page->add($setting);
+
+$settings->add($page);

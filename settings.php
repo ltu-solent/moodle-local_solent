@@ -28,5 +28,6 @@ defined('MOODLE_INTERNAL') || die();
 if ($hassiteconfig) {
     $settings = new theme_boost_admin_settingspage_tabs('local_solent', get_string('pluginname', 'local_solent'));
     include($CFG->dirroot . '/local/solent/settings/course.php');
+    include($CFG->dirroot . '/local/solent/settings/backup.php');
     $ADMIN->add('localplugins', $settings);
 }
