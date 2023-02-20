@@ -25,6 +25,8 @@
 
 namespace local_solent;
 
+use context_course;
+use context_system;
 use core_course_category;
 
 class helper {
