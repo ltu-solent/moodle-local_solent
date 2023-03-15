@@ -35,6 +35,10 @@ $string['enablenoroledeletecontent_desc'] = 'If someone is enrolled on a page, b
 $string['noroleerror'] = 'You are not correctly enrolled on this page. Please contact <a href="mailto:registry@solent.ac.uk">registry@solent.ac.uk</a> to check your module enrolments.';
 
 $string['pluginname'] = 'Solent modifications';
+$string['progressreport'] = 'Progress report';
+$string['progressreport_desc'] = 'Override settings for the course progress report';
+$string['progressreport_addfields'] = 'Add user fields';
+$string['progressreport_addfields_desc'] = 'Add these user fields to the output (comma separated list of user fields).';
 
 $string['restrictbackupactivities'] = 'Restrict backup activities';
 $string['restrictbackupactivities_desc'] = '<p>Enter details of the activities that should be excluded from being backed up when doing a rollover.</p>
@@ -44,3 +48,4 @@ and the value for "activity" could include "assign", "label", "folder" etc. And 
 <p>You don\'t have to have both "activity" and "title", but you must have at least one.</p>';
 
 $string['startdatestring'] = ' - Start date: {$a}';
+$string['studentid'] = 'Student ID';

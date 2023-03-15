@@ -33,4 +33,17 @@ $desc = new lang_string('enablenoroledeletecontent_desc', 'local_solent');
 $setting = new admin_setting_configcheckbox($name, $title, $desc, false);
 $page->add($setting);
 
+$name = 'local_solent/progressreport';
+$title = new lang_string('progressreport', 'local_solent');
+$description = new lang_string('progressreport_desc', 'local_solent');
+$setting = new admin_setting_heading($name, $title, $description);
+$page->add($setting);
+
+$name = 'local_solent/progressreport_addfields';
+$title = new lang_string('progressreport_addfields', 'local_solent');
+$description = new lang_string('progressreport_addfields_desc', 'local_solent');
+$default = 'idnumber,department,address';
+$setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_TAGLIST);
+$page->add($setting);
+
 $settings->add($page);
