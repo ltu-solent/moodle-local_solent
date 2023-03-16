@@ -58,4 +58,18 @@ class helper {
         $cattype = $catparts[0]; // Modules, Courses.
         return $cattype;
     }
+
+    /**
+     * Max tab length. We restrict the length because it gets cumbersome otherwise.
+     *
+     * @param object $course
+     * @return int Max length of field
+     */
+    public static function tablength($course) {
+        $ismodule = static::is_module($course);
+        if (!$ismodule) {
+            return 255;
+        }
+        return get_config('local_solent', 'maxtablength');
+    }
 }

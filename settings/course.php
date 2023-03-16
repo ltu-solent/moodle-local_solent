@@ -33,6 +33,14 @@ $desc = new lang_string('enablenoroledeletecontent_desc', 'local_solent');
 $setting = new admin_setting_configcheckbox($name, $title, $desc, false);
 $page->add($setting);
 
+$name = 'local_solent/maxtablength';
+$title = new lang_string('maxtablength', 'local_solent');
+$description = new lang_string('maxtablength_desc', 'local_solent');
+$options = array_combine(range(30, 255, 5), range(30, 255, 5));
+$default = 30;
+$setting = new admin_setting_configselect($name, $title, $description, $default, $options);
+$page->add($setting);
+
 $name = 'local_solent/progressreport';
 $title = new lang_string('progressreport', 'local_solent');
 $description = new lang_string('progressreport_desc', 'local_solent');

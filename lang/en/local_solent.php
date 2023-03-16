@@ -32,6 +32,9 @@ $string['course'] = 'Course';
 $string['enablenoroledeletecontent'] = 'Enable delete "No role" content';
 $string['enablenoroledeletecontent_desc'] = 'If someone is enrolled on a page, but they have no role, this will delete all the content, except the navigation.';
 
+$string['maxtablength'] = 'Max tab length';
+$string['maxtablength_desc'] = 'Max tab length in characters. Only applies to Module pages.';
+
 $string['noroleerror'] = 'You are not correctly enrolled on this page. Please contact <a href="mailto:registry@solent.ac.uk">registry@solent.ac.uk</a> to check your module enrolments.';
 
 $string['pluginname'] = 'Solent modifications';
