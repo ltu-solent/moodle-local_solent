@@ -17,16 +17,18 @@
 /**
  * Lib file
  *
- * @package   local_Solent
+ * @package   local_solent
  * @author    Mark Sharp <mark.sharp@solent.ac.uk>
  * @copyright 2022 Solent University {@link https://www.solent.ac.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use local_solent\helper as solenthelper;
-
-defined('MOODLE_INTERNAL') || die();
-
+ /**
+  * Called by theme's page_init function.
+  *
+  * @param moodle_page $page
+  * @return void
+  */
 function local_solent_page_init(moodle_page $page) {
     global $CFG, $COURSE, $DB;
     $systemcontext = context_system::instance();
@@ -69,7 +71,6 @@ function local_solent_page_init(moodle_page $page) {
 
     if ($page->pagetype == 'backup-backup' || $page->pagetype == 'backup-import') {
         $restrictactivities = explode("\n", $config->restrictbackupactivities);
-        // error_log(print_r($restrictactivities, true));
         $data = [];
         foreach ($restrictactivities as $line) {
             $line = trim($line);
@@ -105,6 +106,7 @@ function local_solent_page_init(moodle_page $page) {
  * @return boolean|array If the callback returns anything other than false, we assume it replaces the original function.
  */
 function local_solent_override_webservice_execution($function, $params) {
+    // phpcs:disable
     if ($function->name === 'core_courseformat_get_state') {
         // $result = call_user_func_array([$function->classname, $function->methodname], $params);
         // $decoded = json_decode($result);
@@ -121,11 +123,12 @@ function local_solent_override_webservice_execution($function, $params) {
         //     return json_encode($decoded);
         // }
         // foreach ($result['content_items'] as $index => $contentitem) {
-        //     if (!\local_chi\canuse($contentitem->name, $courseid)) {
+        //     if (!\local_solent\canuse($contentitem->name, $courseid)) {
         //         unset($result['content_items'][$index]);
         //     }
         // }
         // return $result;
     }
+    // phpcs:enable
     return false;
 }

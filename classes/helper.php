@@ -29,6 +29,9 @@ use context_course;
 use context_system;
 use core_course_category;
 
+/**
+ * Helper class
+ */
 class helper {
     /**
      * Is this course a module page.
