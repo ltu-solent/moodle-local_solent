@@ -15,27 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Backup and Import settings
+ * External services
  *
  * @package   local_solent
  * @author    Mark Sharp <mark.sharp@solent.ac.uk>
- * @copyright 2022 Solent University {@link https://www.solent.ac.uk}
+ * @copyright 2023 Solent University {@link https://www.solent.ac.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$page = new admin_settingpage('local_solent_backup', get_string('backup', 'local_solent'));
-
-$name = 'local_solent/restrictbackupactivities';
-$title = new lang_string('restrictbackupactivities', 'local_solent');
-$desc = new lang_string('restrictbackupactivities_desc', 'local_solent');
-$default = '
-activity=forum|title=Unit announcements
-title=For guidance and support
-activity=turnitintooltwo
-activity=assign';
-$setting = new admin_setting_configtextarea($name, $title, $desc, $default);
-$page->add($setting);
-
-$settings->add($page);
+$functions = [
+    'local_solent_get_import_restrictions' => array(
+        'classname' => 'local_solent_external',
+        'methodname' => 'get_import_restrictions',
+        'classpath' => 'local/solent/externallib.php',
+        'description' => 'Load course import restrictions to prevent duplicate activities ',
+        'type' => 'read',
+        'ajax' => true
+    )
+];

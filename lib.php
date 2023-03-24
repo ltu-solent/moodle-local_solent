@@ -69,27 +69,8 @@ function local_solent_page_init(moodle_page $page) {
         $page->requires->js_call_amd('local_solent/enrolments', 'deleteContent');
     }
 
-    if ($page->pagetype == 'backup-backup' || $page->pagetype == 'backup-import') {
-        $restrictactivities = explode("\n", $config->restrictbackupactivities);
-        $data = [];
-        foreach ($restrictactivities as $line) {
-            $line = trim($line);
-            if (empty($line)) {
-                continue;
-            }
-            $selectors = explode('|', $line);
-            $item = [];
-            foreach ($selectors as $selector) {
-                $keyvalues = explode('=', $selector);
-                if (count($keyvalues) != 2) {
-                    continue;
-                }
-                $item[$keyvalues[0]] = $keyvalues[1];
-            }
-            $data[] = $item;
-        }
-
-        $page->requires->js_call_amd('local_solent/backup', 'restrictactivitybackup', [$data]);
+    if ($page->pagetype == 'backup-import') {
+        $page->requires->js_call_amd('local_solent/backup', 'getImportRestrictions');
     }
 
     $page->requires->strings_for_js([

@@ -1,8 +1,27 @@
-import Log from 'core/log';
+import Ajax from 'core/ajax';
 
-export const restrictactivitybackup = (data) => {
-    Log.debug("hello");
-    const biform = document.querySelector('#page-backup-backup div[role="main"] form, #page-backup-import div[role="main"] form');
+/**
+ * Get import restrictions to exclude templated items.
+ */
+export const getImportRestrictions = () => {
+    let args = [];
+    const request = {
+        methodname: 'local_solent_get_import_restrictions',
+        args: args
+    };
+
+    Ajax.call([request])[0].done(restrictactivitybackup);
+};
+
+/**
+ * Restrict specified items
+ * @param {array} data The data returned by getImportRestrictions.
+ */
+const restrictactivitybackup = (data) => {
+    const biform = document.querySelector('#page-backup-import div[role="main"] form');
+    if (!biform.stage) {
+        return;
+    }
     const stage = biform.stage.value;
     const jumpto = document.querySelector('[name="oneclickbackup"]');
     const legacy = document.querySelector('[name="setting_root_legacyfiles"]');
@@ -17,18 +36,19 @@ export const restrictactivitybackup = (data) => {
         legacy.setAttribute("disabled", true);
         legacy.value = 0;
     }
-    if (stage != 2) {
+    if (!data) {
         return;
     }
-    if (!data) {
+    if (stage != 2) {
         return;
     }
 
     let checkboxes = biform.querySelectorAll('input[type="checkbox"]');
-    Log.debug(data.length);
     checkboxes.forEach(checkbox => {
         let name = checkbox.name;
-        let label = checkbox.parentNode.innerText;
+        let label = checkbox.parentNode.textContent
+            .replaceAll('\u00a0', ' ') // Non-breaking space.
+            .replaceAll('\n', ' ');
         data.forEach((item) => {
             if (item.activity && item.title) {
                 if ((name.search(new RegExp('activity_' + item.activity + '[0-9a-z_]+included')) != -1)
@@ -56,5 +76,4 @@ export const restrictactivitybackup = (data) => {
             }
         });
     });
-    Log.debug(data.length);
 };
