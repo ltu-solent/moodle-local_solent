@@ -62,3 +62,14 @@ activity=label|title=Collaborative learningCollaborative learning refer...
     And the "Test . name" "checkbox" should be disabled
     And the "Test label2 name" "checkbox" should be enabled
     And the "Test A name" "checkbox" should be enabled
+    When I press "Next"
+    Then I should see "Included items:"
+    When I press "Perform import"
+    And I wait until the page is ready
+    Then I should see "Import complete. Click continue to return to the course."
+    When I press "Continue"
+    Then I should see "Test label2 name"
+    And I should see "Test A name"
+    And I should not see "Test label1 name"
+    And I should not see "Test database name"
+    And I should not see "Test form name"
