@@ -72,6 +72,9 @@ SETTINGS;
         $this->assertSame(['activity' => null, 'title' => '\[fa fa\-beer\] Escape this'], $restrictions[4]);
         $this->assertSame(['activity' => null, 'title' => 'Escape \(this\)'], $restrictions[5]);
         $this->assertSame(['activity' => null, 'title' => 'Escape \{this\}'], $restrictions[6]);
-        $this->assertSame(['activity' => 'label', 'title' => 'Collaborative learningCollaborative learning\.\.\.'], $restrictions[7]);
+        $this->assertSame([
+            'activity' => 'label',
+            'title' => 'Collaborative learningCollaborative learning\.\.\.'
+        ], $restrictions[7]);
     }
 }

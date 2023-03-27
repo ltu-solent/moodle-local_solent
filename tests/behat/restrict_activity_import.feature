@@ -1,4 +1,4 @@
-@local_solent @sol @javascript @theme_solent
+@local @local_solent @sol @javascript @theme_solent
 Feature: Restrict specific activities being imported
   In order to only copy non-templated content between courses
   As a teacher
@@ -62,4 +62,3 @@ activity=label|title=Collaborative learningCollaborative learning refer...
     And the "Test . name" "checkbox" should be disabled
     And the "Test label2 name" "checkbox" should be enabled
     And the "Test A name" "checkbox" should be enabled
-

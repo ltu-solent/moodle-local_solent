@@ -3,6 +3,7 @@ import Pending from 'core/pending';
 
 /**
  * Get import restrictions to exclude templated items.
+ * @return {object}
  */
 export const getImportRestrictions = () => {
     let args = [];
