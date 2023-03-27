@@ -48,7 +48,7 @@ activity=label|title=Collaborative learningCollaborative learning refer...
     And I add the "Comments" block
     And I add the "Recent blog entries" block
     And I turn editing mode off
-    And I am on the "New Course 1" "import" page
+    And I navigate to "Import" in current page administration
     And I click on "OC1" "radio"
     When I press "Continue"
     Then I should see "Import settings"
