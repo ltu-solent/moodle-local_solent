@@ -60,15 +60,21 @@ class local_solent_external extends external_api {
                 'activity' => null,
                 'title' => null
             ];
+            $error = false;
             foreach ($selectors as $selector) {
                 $keyvalues = explode('=', $selector);
                 if (count($keyvalues) != 2) {
+                    $error = true;
+                    continue;
+                }
+                if (!in_array($keyvalues[0], ['activity', 'title'])) {
+                    $error = true;
                     continue;
                 }
                 // Need to escape brackets as this value will be processed in JS as a Regular Expression.
-                $item[$keyvalues[0]] = str_replace(['[', ']', '(', ')'], ['\[', '\]', '\(', '\)'], $keyvalues[1]);
+                $item[$keyvalues[0]] = preg_quote($keyvalues[1]);
             }
-            if ($item['activity'] == null && $item['title'] == null) {
+            if (($item['activity'] == null && $item['title'] == null) || $error) {
                 continue;
             }
             $data[] = $item;

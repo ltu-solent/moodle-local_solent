@@ -1,4 +1,5 @@
 import Ajax from 'core/ajax';
+import Pending from 'core/pending';
 
 /**
  * Get import restrictions to exclude templated items.
@@ -9,8 +10,11 @@ export const getImportRestrictions = () => {
         methodname: 'local_solent_get_import_restrictions',
         args: args
     };
-
-    Ajax.call([request])[0].done(restrictactivitybackup);
+    const pendingPromise = new Pending('local/solent:getImportRestrictions');
+    Ajax.call([request])[0]
+        .then(restrictactivitybackup)
+        .catch();
+    return pendingPromise.resolve();
 };
 
 /**
