@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2022111809;
+$plugin->version   = 2022111810;
 $plugin->release   = 2022111800;
 $plugin->requires  = 2020061500;
 $plugin->component = 'local_solent';

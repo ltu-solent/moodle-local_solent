@@ -70,7 +70,6 @@ function local_solent_page_init(moodle_page $page) {
     }
 
     if ($page->pagetype == 'backup-import') {
-        error_log("Loading import restrictions");
         $page->requires->js_call_amd('local_solent/backup', 'getImportRestrictions');
     }
 
