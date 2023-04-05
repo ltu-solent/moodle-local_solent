@@ -6,9 +6,9 @@ Feature: Restrict specific activities being imported
 
   Background:
     Given the following "courses" exist:
-      | fullname     | shortname | catgory |
-      | Old Course 1 | OC1       | 0       |
-      | New Course 1 | NC1       | 0       |
+      | fullname     | shortname | category |
+      | Old Course 1 | OC1       | 0        |
+      | New Course 1 | NC1       | 0        |
     And the following "users" exist:
       | username | firstname | lastname | email                |
       | teacher1 | Teacher   | 1        | teacher1@example.com |
