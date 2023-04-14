@@ -36,6 +36,7 @@ require_once($CFG->dirroot . '/local/solent/externallib.php');
 
 /**
  * Test externallib functions
+ * @group sol
  */
 class externallib_test extends externallib_advanced_testcase {
 
