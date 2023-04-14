@@ -1,4 +1,4 @@
-@local @local_solent @sol
+@local @local_solent @sol @javascript
 Feature: Only the first n section names can be changes
   In order to preserve the SOL template structure
   As a teacher
