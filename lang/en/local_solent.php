@@ -52,3 +52,4 @@ and the value for "activity" could include "assign", "label", "folder" etc. And 
 
 $string['startdatestring'] = ' - Start date: {$a}';
 $string['studentid'] = 'Student ID';
+$string['submissiontypesinfo'] = '<div class="alert alert-info">Submission types - click the help icon <i class="icon fa fa-question-circle text-info fa-fw"></i>for information about submission settings.</div>';
