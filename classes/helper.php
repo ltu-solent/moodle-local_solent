@@ -45,7 +45,10 @@ class helper {
         if (!isset($course->category)) {
             $course = $DB->get_record('course', ['id' => $course->id]);
         }
-        $category = core_course_category::get($course->category, IGNORE_MISSING);
+        $category = core_course_category::get($course->category, IGNORE_MISSING, true);
+        if (!$category) {
+            return false;
+        }
         $cattype = self::get_category_type($category);
         return $cattype == 'modules';
     }
@@ -57,8 +60,11 @@ class helper {
      * @return string modules, courses
      */
     public static function get_category_type(core_course_category $category) {
+        if (empty($category->idnumber)) {
+            return '';
+        }
         $catparts = explode('_', $category->idnumber);
-        $cattype = $catparts[0]; // Modules, Courses.
+        $cattype = $catparts[0]; // Modules, Courses, or whatever was specified.
         return $cattype;
     }
 
