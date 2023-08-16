@@ -30,5 +30,6 @@ $plugin->release   = 2023032700;
 $plugin->requires  = 2022112800;
 $plugin->component = 'local_solent';
 $plugin->dependencies = [
-    'format_onetopic' => 2022081607
+    'format_onetopic' => 2022081607,
+    'theme_solent' => ANY_VERSION
 ];
