@@ -62,11 +62,11 @@ function local_solent_page_init(moodle_page $page) {
     } else {
         if (count($roles) === 0 && !is_guest($coursecontext) && !is_siteadmin() && $COURSE->category > 0) {
             $page->add_body_class('courserole-none');
+            // Delete content if the current user has no role in this course.
+            if (isset($config->enablenoroledeletecontent) && $config->enablenoroledeletecontent == 1) {
+                $page->requires->js_call_amd('local_solent/enrolments', 'deleteContent');
+            }
         }
-    }
-    // Delete content if the current user has no role in this course.
-    if (isset($config->enablenoroledeletecontent)) {
-        $page->requires->js_call_amd('local_solent/enrolments', 'deleteContent');
     }
 
     if ($page->pagetype == 'backup-import') {
