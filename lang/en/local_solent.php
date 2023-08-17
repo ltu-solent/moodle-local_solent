@@ -35,7 +35,7 @@ $string['enablenoroledeletecontent_desc'] = 'If someone is enrolled on a page, b
 $string['maxtablength'] = 'Max tab length';
 $string['maxtablength_desc'] = 'Max tab length in characters. Only applies to Module pages.';
 
-$string['noroleerror'] = 'You are not correctly enrolled on this page. Please contact <a href="mailto:registry@solent.ac.uk">registry@solent.ac.uk</a> to check your module enrolments.';
+$string['noroleerror'] = 'You are not correctly enrolled on this page. Please contact Guided Learning on <a href="https://learn.solent.ac.uk/ask">https://learn.solent.ac.uk/ask</a>';
 
 $string['pluginname'] = 'Solent modifications';
 $string['progressreport'] = 'Progress report';
