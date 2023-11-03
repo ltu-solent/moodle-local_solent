@@ -32,7 +32,6 @@ activity=label|title=Collaborative learningCollaborative learning refer...
       | config | value        | plugin |
       | theme  | solent |        |
 
-  @javascript
   Scenario: Import course's contents to another course
     Given I log in as "teacher1"
     And the following "activities" exist:
