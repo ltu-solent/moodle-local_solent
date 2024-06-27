@@ -58,7 +58,7 @@ class local_solent_external extends external_api {
             // Either part can be null, but not both.
             $item = [
                 'activity' => null,
-                'title' => null
+                'title' => null,
             ];
             $error = false;
             foreach ($selectors as $selector) {
@@ -91,7 +91,7 @@ class local_solent_external extends external_api {
         return new external_multiple_structure(
             new external_single_structure([
                 'activity' => new external_value(PARAM_ALPHAEXT, 'Component name of activity', VALUE_REQUIRED, null),
-                'title' => new external_value(PARAM_TEXT, 'Text to search for', VALUE_REQUIRED, null)
+                'title' => new external_value(PARAM_TEXT, 'Text to search for', VALUE_REQUIRED, null),
             ])
         );
     }

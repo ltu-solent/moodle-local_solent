@@ -74,7 +74,7 @@ function local_solent_page_init(moodle_page $page) {
     }
 
     $page->requires->strings_for_js([
-        'noroleerror'
+        'noroleerror',
     ], 'local_solent');
 }
 

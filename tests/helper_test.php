@@ -57,36 +57,36 @@ class helper_test extends advanced_testcase {
      *
      * @return array
      */
-    public function get_category_type_provider() {
+    public static function get_category_type_provider(): array {
         return [
             'modules' => [
                 'category' => [
                     'name' => 'Modules',
-                    'idnumber' => 'modules_ABC101'
+                    'idnumber' => 'modules_ABC101',
                 ],
-                'response' => 'modules'
+                'response' => 'modules',
             ],
             'courses' => [
                 'category' => [
                     'name' => 'Courses',
-                    'idnumber' => 'courses_ABC101'
+                    'idnumber' => 'courses_ABC101',
                 ],
-                'response' => 'courses'
+                'response' => 'courses',
             ],
             'empty' => [
                 'category' => [
                     'name' => 'Nothing special',
-                    'idnumber' => ''
+                    'idnumber' => '',
                 ],
-                'response' => ''
+                'response' => '',
             ],
             'random' => [
                 'category' => [
                     'name' => 'RANDOM',
-                    'idnumber' => 'RANDOM'
+                    'idnumber' => 'RANDOM',
                 ],
-                'response' => 'RANDOM'
-            ]
+                'response' => 'RANDOM',
+            ],
         ];
     }
 
@@ -116,24 +116,24 @@ class helper_test extends advanced_testcase {
      *
      * @return array
      */
-    public function is_module_provider(): array {
+    public static function is_module_provider(): array {
         return [
             'modules' => [
                 'category' => 'modules_ABC',
-                'response' => true
+                'response' => true,
             ],
             'courses' => [
                 'category' => 'courses_ABC',
-                'response' => false
+                'response' => false,
             ],
             'empty' => [
                 'category' => null,
-                'response' => false
+                'response' => false,
             ],
             'random' => [
                 'category' => 'RANDOM',
-                'response' => false
-            ]
+                'response' => false,
+            ],
         ];
     }
 }

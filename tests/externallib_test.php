@@ -75,7 +75,7 @@ SETTINGS;
         $this->assertSame(['activity' => null, 'title' => 'Escape \{this\}'], $restrictions[6]);
         $this->assertSame([
             'activity' => 'label',
-            'title' => 'Collaborative learningCollaborative learning\.\.\.'
+            'title' => 'Collaborative learningCollaborative learning\.\.\.',
         ], $restrictions[7]);
     }
 }
