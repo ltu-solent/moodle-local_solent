@@ -27,6 +27,13 @@ defined('MOODLE_INTERNAL') || die();
 
 $page = new admin_settingpage('local_solent_course', get_string('course', 'local_solent'));
 
+// Hidden activities and resources.
+$name = 'local_solent/hiddenactivities';
+$title = get_string('hiddenactivities', 'local_solent');
+$description = get_string('hiddenactivitiesdesc', 'local_solent');
+$setting = new admin_setting_configtext($name, $title, $description, '', PARAM_TAGLIST);
+$page->add($setting);
+
 $name = 'local_solent/enablenoroledeletecontent';
 $title = new lang_string('enablenoroledeletecontent', 'local_solent');
 $desc = new lang_string('enablenoroledeletecontent_desc', 'local_solent');

@@ -87,6 +87,16 @@ function local_solent_page_init(moodle_page $page) {
  * @return boolean|array If the callback returns anything other than false, we assume it replaces the original function.
  */
 function local_solent_override_webservice_execution($function, $params) {
+    if ($function->name === 'core_course_get_course_content_items') {
+        $result = call_user_func_array([$function->classname, $function->methodname], $params);
+        foreach ($result['content_items'] as $index => $contentitem) {
+            $hiddenactivities = explode(',', get_config('local_solent', 'hiddenactivities'));
+            if (in_array($contentitem->name, $hiddenactivities)) {
+                unset($result['content_items'][$index]);
+            }
+        }
+        return $result;
+    }
     // phpcs:disable
     if ($function->name === 'core_courseformat_get_state') {
         // $result = call_user_func_array([$function->classname, $function->methodname], $params);

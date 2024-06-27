@@ -32,6 +32,9 @@ $string['course'] = 'Course';
 $string['enablenoroledeletecontent'] = 'Enable delete "No role" content';
 $string['enablenoroledeletecontent_desc'] = 'If someone is enrolled on a page, but they have no role, this will delete all the content, except the navigation.';
 
+$string['hiddenactivities'] = 'Hidden activities and resources.';
+$string['hiddenactivitiesdesc'] = 'Provide a comma seperated list of activites and resources you wish to hide from the resource chooser dialogue.';
+
 $string['maxtablength'] = 'Max tab length';
 $string['maxtablength_desc'] = 'Max tab length in characters. Only applies to Module pages.';
 
