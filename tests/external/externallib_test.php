@@ -23,7 +23,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_solent;
+namespace local_solent\external;
 
 use externallib_advanced_testcase;
 
@@ -32,13 +32,12 @@ defined('MOODLE_INTERNAL') || die();
 global $CFG;
 
 require_once($CFG->dirroot . '/webservice/tests/helpers.php');
-require_once($CFG->dirroot . '/local/solent/externallib.php');
 
 /**
  * Test externallib functions
  * @group sol
  */
-class externallib_test extends externallib_advanced_testcase {
+final class externallib_test extends externallib_advanced_testcase {
 
     /**
      * Get import restrictions. Ajax function.
@@ -46,7 +45,7 @@ class externallib_test extends externallib_advanced_testcase {
      * @covers \local_solent_external::get_import_restrictions
      * @return void
      */
-    public function test_get_import_restrictions() {
+    public function test_get_import_restrictions(): void {
         $this->resetAfterTest();
         // Exclude empty lines; lines with invalid (including partial) entries; comment lines.
         $settings = <<<SETTINGS
@@ -64,7 +63,7 @@ activity=label|title=Collaborative learningCollaborative learning...
 # This is a comment
 SETTINGS;
         set_config('restrictbackupactivities', $settings, 'local_solent');
-        $restrictions = \local_solent_external::get_import_restrictions();
+        $restrictions = get_import_restrictions::execute();
         $this->assertCount(8, $restrictions);
         $this->assertSame(['activity' => 'forum', 'title' => 'Unit announcements'], $restrictions[0]);
         $this->assertSame(['activity' => null, 'title' => 'For guidance and support'], $restrictions[1]);

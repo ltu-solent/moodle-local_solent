@@ -14,29 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace local_solent\external;
+
+use core_external\external_api;
+use core_external\external_function_parameters;
+use core_external\external_multiple_structure;
+use core_external\external_single_structure;
+use core_external\external_value;
+
 /**
- * External functions
+ * Class get_import_restrictions
  *
- * @package   local_solent
- * @author    Mark Sharp <mark.sharp@solent.ac.uk>
- * @copyright 2023 Solent University {@link https://www.solent.ac.uk}
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    local_solent
+ * @copyright  2025 Southampton Solent University {@link https://www.solent.ac.uk}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
-
-require_once($CFG->dirroot . '/lib/externallib.php');
-
-/**
- * External functions
- */
-class local_solent_external extends external_api {
+class get_import_restrictions extends external_api {
     /**
      * Get import restriction parameters
      *
      * @return external_function_parameters
      */
-    public static function get_import_restrictions_parameters(): external_function_parameters {
+    public static function external_parameters(): external_function_parameters {
         return new external_function_parameters([]);
     }
 
@@ -45,7 +44,7 @@ class local_solent_external extends external_api {
      *
      * @return array List of items
      */
-    public static function get_import_restrictions() {
+    public static function execute() {
         $config = get_config('local_solent');
         $restrictactivities = explode("\n", $config->restrictbackupactivities);
         $data = [];
@@ -87,7 +86,7 @@ class local_solent_external extends external_api {
      *
      * @return external_multiple_structure
      */
-    public static function get_import_restrictions_returns(): external_multiple_structure {
+    public static function external_returns(): external_multiple_structure {
         return new external_multiple_structure(
             new external_single_structure([
                 'activity' => new external_value(PARAM_ALPHAEXT, 'Component name of activity', VALUE_REQUIRED, null),

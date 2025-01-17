@@ -27,9 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $functions = [
     'local_solent_get_import_restrictions' => [
-        'classname' => 'local_solent_external',
-        'methodname' => 'get_import_restrictions',
-        'classpath' => 'local/solent/externallib.php',
+        'classname' => 'local_solent\external\get_import_restrictions',
         'description' => 'Load course import restrictions to prevent duplicate activities ',
         'type' => 'read',
         'ajax' => true,
