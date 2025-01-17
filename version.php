@@ -25,11 +25,11 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2023032700;
-$plugin->release   = 2023032700;
-$plugin->requires  = 2022112800;
+$plugin->version   = 2025011700;
+$plugin->release   = 'v4.5-r0';
+$plugin->requires  = 2024100700;
 $plugin->component = 'local_solent';
 $plugin->dependencies = [
-    'format_onetopic' => 2022081607,
-    'theme_solent' => ANY_VERSION,
+    'format_onetopic' => 2024050902,
 ];
+$plugin->supported = [405, 500];

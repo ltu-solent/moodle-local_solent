@@ -1,4 +1,4 @@
-@local @local_solent @sol @javascript @theme_solent
+@local @local_solent @sol @javascript
 Feature: Restrict specific activities being imported
   In order to only copy non-templated content between courses
   As a teacher
@@ -28,9 +28,6 @@ activity=label|title=Test . name
 activity=label|title=Collaborative learningCollaborative learning refer...
     """
     And I press "Save changes"
-    And the following config values are set as admin:
-      | config | value        | plugin |
-      | theme  | solent |        |
 
   Scenario: Import course's contents to another course
     Given I log in as "teacher1"

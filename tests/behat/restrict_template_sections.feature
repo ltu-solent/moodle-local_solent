@@ -32,30 +32,27 @@ Feature: Only the first n section names can be changes
 
   Scenario: Cannot change the name of a locked section for a course in modules_ category
     Given the following config values are set as admin:
-      | locksections | 2 | format_onetopic |
+      | locksections        | 2        | format_onetopic |
       | locksectioncategory | modules_ | format_onetopic |
     And I log in as "teacher1"
     And I am on "C1" course homepage with editing mode on
     And I click on "Topic 2" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
     When I edit the section "2"
-    Then the "Custom" "field" should be disabled
-    And the "New value for Section name" "field" should be disabled
+    Then the "Section name" "field" should be disabled
     When I am on "C1" course homepage
     And I click on "Topic 4" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
     When I edit the section "4"
-    And I set the field "Custom" to "1"
-    And I set the field "New value for Section name" to "My section 4"
+    And I set the field "Section name" to "My section 4"
     And I press "Save changes"
     Then I should see "My section 4" in the "#page-content ul.nav.nav-tabs" "css_element"
 
   Scenario: Can change the name of a section for a course not in modules_ category
     Given the following config values are set as admin:
-      | locksections | 2 | format_onetopic |
+      | locksections        | 2        | format_onetopic |
       | locksectioncategory | modules_ | format_onetopic |
     And I log in as "teacher1"
     And I am on "C2" course homepage with editing mode on
     And I click on "Topic 2" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
     When I edit the section "2" and I fill the form with:
-      | Custom                     | 1            |
-      | New value for Section name | My section 2 |
+      | Section name | My section 2 |
     Then I should see "My section 2" in the "#page-content ul.nav.nav-tabs" "css_element"

@@ -1,4 +1,4 @@
-@local @local_solent @sol @javascript @theme_solent
+@local @local_solent @sol @javascript
 Feature: Delete course content if the current user has no role
   In order to ensure users are properly enrolled
   As a user enrolled with no role
@@ -33,7 +33,6 @@ Feature: Delete course content if the current user has no role
     And I log out
     And the following config values are set as admin:
       | config                    | value  | plugin       |
-      | theme                     | solent |              |
       | enablenoroledeletecontent | 1      | local_solent |
 
   Scenario: Users with roles should see content
@@ -41,7 +40,7 @@ Feature: Delete course content if the current user has no role
     And I am on "Course role" course homepage
     And I wait "5" seconds
     When I click on "Topic 1" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
-    Then I should see "Test label1 name" in the ".onetopic-tab-body" "css_element"
+    Then I should see "Test label1 name" in the ".course-content" "css_element"
     And I should not see "You are not correctly enrolled on this page." in the "#user-notifications" "css_element"
 
   Scenario: Users with no roles do not see content
@@ -56,7 +55,7 @@ Feature: Delete course content if the current user has no role
     And I am on "Course role" course homepage
     And I wait "5" seconds
     And I click on "Topic 1" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
-    Then I should not see "Test label1 name" in the ".onetopic-tab-body" "css_element"
+    Then I should not see "Test label1 name" in the ".course-content" "css_element"
     And I should see "You are not correctly enrolled on this page" in the "#user-notifications" "css_element"
 
   Scenario: System roles should always see the content
@@ -64,7 +63,7 @@ Feature: Delete course content if the current user has no role
     And I am on "Course role" course homepage
     And I wait "5" seconds
     When I click on "Topic 1" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
-    Then I should see "Test label1 name" in the ".onetopic-tab-body" "css_element"
+    Then I should see "Test label1 name" in the ".course-content" "css_element"
     And I should not see "You are not correctly enrolled on this page." in the "#user-notifications" "css_element"
 
   Scenario: Guests should always see the content
@@ -72,7 +71,7 @@ Feature: Delete course content if the current user has no role
     And I press "Access as a guest"
     And I wait "5" seconds
     When I click on "Topic 1" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
-    Then I should see "Test label1 name" in the ".onetopic-tab-body" "css_element"
+    Then I should see "Test label1 name" in the ".course-content" "css_element"
     And I should not see "You are not correctly enrolled on this page." in the "#user-notifications" "css_element"
 
   Scenario: Feature is disabled, all users should see content
@@ -83,7 +82,7 @@ Feature: Delete course content if the current user has no role
     And I am on "Course role" course homepage
     And I wait "5" seconds
     And I click on "Topic 1" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
-    Then I should see "Test label1 name" in the ".onetopic-tab-body" "css_element"
+    Then I should see "Test label1 name" in the ".course-content" "css_element"
     And I should not see "You are not correctly enrolled on this page" in the "#user-notifications" "css_element"
     And I log in as "teacher1"
     And I am on "Course role" course homepage
@@ -96,18 +95,18 @@ Feature: Delete course content if the current user has no role
     And I am on "Course role" course homepage
     And I wait "5" seconds
     And I click on "Topic 1" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
-    Then I should see "Test label1 name" in the ".onetopic-tab-body" "css_element"
+    Then I should see "Test label1 name" in the ".course-content" "css_element"
     And I should not see "You are not correctly enrolled on this page" in the "#user-notifications" "css_element"
     When I log in as "manager1"
     And I am on "Course role" course homepage
     And I wait "5" seconds
     And I click on "Topic 1" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
-    Then I should see "Test label1 name" in the ".onetopic-tab-body" "css_element"
+    Then I should see "Test label1 name" in the ".course-content" "css_element"
     And I should not see "You are not correctly enrolled on this page." in the "#user-notifications" "css_element"
     When I log out
     And I am on "Course role" course homepage
     And I press "Access as a guest"
     And I wait "5" seconds
     And I click on "Topic 1" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
-    Then I should see "Test label1 name" in the ".onetopic-tab-body" "css_element"
+    Then I should see "Test label1 name" in the ".course-content" "css_element"
     And I should not see "You are not correctly enrolled on this page." in the "#user-notifications" "css_element"
