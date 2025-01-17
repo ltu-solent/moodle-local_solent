@@ -23,61 +23,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- /**
-  * Called by theme's page_init function.
-  *
-  * @param moodle_page $page
-  * @return void
-  */
-function local_solent_page_init(moodle_page $page) {
-    global $CFG, $COURSE, $DB;
-    $systemcontext = context_system::instance();
-    $coursecontext = context_course::instance($COURSE->id);
-    $config = get_config('local_solent');
-    // Set up body classes to be used by scripts.
-    if (isloggedin()) {
-        $page->add_body_class('loggedin');
-    }
-
-    if (is_siteadmin()) {
-        $page->add_body_class('systemrole-admin');
-    }
-
-    if (is_enrolled($coursecontext)) {
-        $page->add_body_class('coursestatus-enrolled');
-    }
-
-    if (is_viewing($coursecontext)) {
-        $page->add_body_class('coursestatus-viewing');
-    }
-
-    if (is_guest($coursecontext)) {
-        $page->add_body_class('courserole-guest'); // Probably don't need this.
-    }
-
-    if ($roles = get_user_roles($coursecontext)) {
-        foreach ($roles as $role) {
-            $page->add_body_class('courserole-' . $role->shortname);
-        }
-    } else {
-        if (count($roles) === 0 && !is_guest($coursecontext) && !is_siteadmin() && $COURSE->category > 0) {
-            $page->add_body_class('courserole-none');
-            // Delete content if the current user has no role in this course.
-            if (isset($config->enablenoroledeletecontent) && $config->enablenoroledeletecontent == 1) {
-                $page->requires->js_call_amd('local_solent/enrolments', 'deleteContent');
-            }
-        }
-    }
-
-    if ($page->pagetype == 'backup-import') {
-        $page->requires->js_call_amd('local_solent/backup', 'getImportRestrictions');
-    }
-
-    $page->requires->strings_for_js([
-        'noroleerror',
-    ], 'local_solent');
-}
-
 /**
  * This function allows us to override any webservice function. Use it with care.
  * https://docs.moodle.org/dev/Miscellaneous_callbacks#override_webservice_execution
