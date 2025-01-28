@@ -35,7 +35,7 @@ class get_import_restrictions extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function external_parameters(): external_function_parameters {
+    public static function execute_parameters(): external_function_parameters {
         return new external_function_parameters([]);
     }
 
@@ -86,7 +86,7 @@ class get_import_restrictions extends external_api {
      *
      * @return external_multiple_structure
      */
-    public static function external_returns(): external_multiple_structure {
+    public static function execute_returns(): external_multiple_structure {
         return new external_multiple_structure(
             new external_single_structure([
                 'activity' => new external_value(PARAM_ALPHAEXT, 'Component name of activity', VALUE_REQUIRED, null),
