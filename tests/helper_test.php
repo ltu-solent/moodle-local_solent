@@ -35,7 +35,7 @@ global $CFG;
  * Tests for local_solent helper functions
  * @group sol
  */
-class helper_test extends advanced_testcase {
+final class helper_test extends advanced_testcase {
     /**
      * Test get category type, mostly used to distinguish modules and courses
      *
@@ -45,7 +45,7 @@ class helper_test extends advanced_testcase {
      * @covers \local_solent\helper::get_category_type
      * @dataProvider get_category_type_provider
      */
-    public function test_get_category_type($category, $response) {
+    public function test_get_category_type($category, $response): void {
         $this->resetAfterTest();
         $cat = $this->getDataGenerator()->create_category($category);
         $type = helper::get_category_type($cat);
@@ -99,7 +99,7 @@ class helper_test extends advanced_testcase {
      * @covers \local_solent\helper::is_module
      * @dataProvider is_module_provider
      */
-    public function test_is_module($category, $response) {
+    public function test_is_module($category, $response): void {
         $this->resetAfterTest();
         $catid = null;
         if ($category) {

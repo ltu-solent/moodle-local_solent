@@ -42,9 +42,9 @@ $string['noroleerror'] = 'You are not correctly enrolled on this page. Please co
 
 $string['pluginname'] = 'Solent modifications';
 $string['progressreport'] = 'Progress report';
-$string['progressreport_desc'] = 'Override settings for the course progress report';
 $string['progressreport_addfields'] = 'Add user fields';
 $string['progressreport_addfields_desc'] = 'Add these user fields to the output (comma separated list of user fields).';
+$string['progressreport_desc'] = 'Override settings for the course progress report';
 
 $string['restrictbackupactivities'] = 'Restrict backup activities';
 $string['restrictbackupactivities_desc'] = '<p>Enter details of the activities that should be excluded from being backed up when doing a rollover.</p>
