@@ -38,6 +38,7 @@ Feature: Only the first n section names can be changes
     And I am on "C1" course homepage with editing mode on
     And I click on "Topic 2" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
     When I edit the section "2"
+    And I wait until the page is ready
     Then the "Section name" "field" should be disabled
     When I am on "C1" course homepage
     And I click on "Topic 4" "link" in the "#page-content ul.nav.nav-tabs" "css_element"
