@@ -34,17 +34,11 @@ jobs:
           - php: '8.3'
             # Main job. Run all checks that do not require setup and only need to be run once.
             runchecks: 'all'
-            moodle-branch: 'MOODLE_405_STABLE'
+            moodle-branch: 'SSU_405_DEV'
             database: 'pgsql'
           - php: '8.1'
-            moodle-branch: 'MOODLE_405_STABLE'
+            moodle-branch: 'SSU_405_DEV'
             database: 'mariadb'
-          - php: '8.3'
-            moodle-branch: 'main'
-            database: 'mariadb'
-          - php: '8.2'
-            moodle-branch: 'main'
-            database: 'pgsql'
 
     steps:
       - name: Check out repository code
@@ -77,6 +71,7 @@ jobs:
         env:
           DB: ${{ matrix.database }}
           MOODLE_BRANCH: ${{ matrix.moodle-branch }}
+          MOODLE_REPO: https://github.com/ltu-solent/moodle-solent.git
           # Uncomment this to run Behat tests using the Moodle App.
           # MOODLE_APP: 'true'
 
