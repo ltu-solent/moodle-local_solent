@@ -33,7 +33,9 @@ $string['enablenoroledeletecontent'] = 'Enable delete "No role" content';
 $string['enablenoroledeletecontent_desc'] = 'If someone is enrolled on a page, but they have no role, this will delete all the content, except the navigation.';
 
 $string['hiddenactivities'] = 'Hidden activities and resources.';
-$string['hiddenactivitiesdesc'] = 'Provide a comma seperated list of activites and resources you wish to hide from the resource chooser dialogue.';
+$string['hiddenactivitiesdesc'] = 'Provide a comma seperated list of activites and resources you wish to hide from the resource chooser dialogue. Use the component name minus "mod_" e.g. "assign"';
+$string['hiddenltis'] = 'Hidden LTIs';
+$string['hiddenltisdesc'] = 'Provide a comma seperated list of LTIs to be excluded from the resource chooser. Use the "Tool name" you have given the LTI.';
 
 $string['maxtablength'] = 'Max tab length';
 $string['maxtablength_desc'] = 'Max tab length in characters. Only applies to Module pages.';

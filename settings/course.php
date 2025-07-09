@@ -34,6 +34,12 @@ $description = get_string('hiddenactivitiesdesc', 'local_solent');
 $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_TAGLIST);
 $page->add($setting);
 
+$name = 'local_solent/hiddenltis';
+$title = get_string('hiddenltis', 'local_solent');
+$description = get_string('hiddenltisdesc', 'local_solent');
+$setting = new admin_setting_configtext($name, $title, $description, '', PARAM_TAGLIST);
+$page->add($setting);
+
 $name = 'local_solent/enablenoroledeletecontent';
 $title = new lang_string('enablenoroledeletecontent', 'local_solent');
 $desc = new lang_string('enablenoroledeletecontent_desc', 'local_solent');

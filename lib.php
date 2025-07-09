@@ -34,10 +34,16 @@
 function local_solent_override_webservice_execution($function, $params) {
     if ($function->name === 'core_course_get_course_content_items') {
         $result = call_user_func_array([$function->classname, $function->methodname], $params);
+        $hiddenactivities = explode(',', get_config('local_solent', 'hiddenactivities'));
+        $hiddenltis = explode(',', get_config('local_solent', 'hiddenltis'));
         foreach ($result['content_items'] as $index => $contentitem) {
-            $hiddenactivities = explode(',', get_config('local_solent', 'hiddenactivities'));
             if (in_array($contentitem->name, $hiddenactivities)) {
                 unset($result['content_items'][$index]);
+            }
+            if ($contentitem->componentname == 'mod_lti') {
+                if (in_array($contentitem->title, $hiddenltis)) {
+                    unset($result['content_items'][$index]);
+                }
             }
         }
         return $result;
