@@ -25,20 +25,13 @@
 
 namespace local_solent\external;
 
-use externallib_advanced_testcase;
-
-defined('MOODLE_INTERNAL') || die();
-
-global $CFG;
-
-require_once($CFG->dirroot . '/webservice/tests/helpers.php');
+use core_external\tests\externallib_testcase;
 
 /**
  * Test externallib functions
  * @group sol
  */
-final class externallib_test extends externallib_advanced_testcase {
-
+final class externallib_test extends externallib_testcase {
     /**
      * Get import restrictions. Ajax function.
      *
