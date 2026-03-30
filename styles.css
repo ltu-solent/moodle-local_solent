@@ -1,0 +1,7 @@
+.gradingform_rubric .criterion .levels .level-desc {
+    border-left: 1px solid #ddd;
+}
+
+.gradingform_rubric .criterion .levels .level-desc:last-child {
+    border-right: 1px solid #ddd;
+}
