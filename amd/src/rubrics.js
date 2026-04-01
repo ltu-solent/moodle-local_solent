@@ -16,17 +16,23 @@
 import Templates from 'core/templates';
 
 /**
- * TODO describe module rubrics
+ * To save space, takes the rubric level descriptions and renders them as help icons in the rubric grading form element.
  *
  * @module     local_solent/rubrics
  * @copyright  2026 Southampton Solent University {@link https://www.solent.ac.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 export const init = () => {
-    const rubric = document.querySelector('#rubric-advancedgrading');
-    if (!rubric) {
+    const rubrics = document.querySelectorAll('.gradingform_rubric');
+    if (!rubrics || rubrics.length === 0) {
         return;
     }
+    rubrics.forEach((rubric) => {
+         renderRubric(rubric);
+    });
+};
+
+const renderRubric = (rubric) => {
     const criteria = rubric.querySelectorAll('.criterion');
     if (!criteria) {
         return;
