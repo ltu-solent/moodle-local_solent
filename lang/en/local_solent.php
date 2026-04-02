@@ -24,6 +24,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+$string['availabilityinfo'] = '<div class="alert alert-info">For Summative assignments, Availability settings cannot be altered.<br/>To alter the Due date, contact <a href="mailto:assessments@solent.ac.uk">assessments@solent.ac.uk</a></div>';
 
 $string['backup'] = 'Backup';
 
